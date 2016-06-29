@@ -21,7 +21,6 @@ object Huffman {
     abstract class CodeTree
   case class Fork(left: CodeTree, right: CodeTree, chars: List[Char], weight: Int) extends CodeTree
   case class Leaf(char: Char, weight: Int) extends CodeTree
-  
 
   // Part 1: Basics
     def weight(tree: CodeTree): Int = tree match{
@@ -36,8 +35,6 @@ object Huffman {
   
   def makeCodeTree(left: CodeTree, right: CodeTree) =
     Fork(left, right, chars(left) ::: chars(right), weight(left) + weight(right))
-
-
 
   // Part 2: Generating Huffman trees
 
@@ -151,13 +148,13 @@ object Huffman {
       case l: Leaf => List(l.char)
     }
   }
+
   def get_weight(tree: CodeTree): Int={
     tree match {
       case f: Fork => f.weight
       case l: Leaf => l.weight
     }
   }
-
 
   /**
    * This function will be called in the following way:
@@ -193,7 +190,6 @@ object Huffman {
     def createCodeTree(chars: List[Char]): CodeTree = {
     until(singleton, combine)(makeOrderedLeafList(times(chars))).head
   }
-  
 
   // Part 3: Decoding
 
@@ -245,7 +241,6 @@ object Huffman {
     def decodedSecret: List[Char] = {
     decode(frenchCode, secret)
   }
-  
 
   // Part 4a: Encoding using Huffman tree
 
